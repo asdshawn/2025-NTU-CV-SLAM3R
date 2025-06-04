@@ -28,7 +28,7 @@ RUN echo 'from slam3r.models import Local2WorldModel, Image2PointsModel' > downl
     python3 download_models.py
 
 # 設定目錄權限並切換使用者
-RUN chown -R user:root /home/user/slam3r
+RUN chown -R user:root /home/user/slam3r /home/user/.cache/huggingface
 USER user
 
 ENTRYPOINT ["python3", "app.py"]
