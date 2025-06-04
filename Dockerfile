@@ -5,7 +5,6 @@ EXPOSE 7860/tcp
 RUN apt update && apt -y install python3-pip sudo libglib2.0-dev libgl1 ffmpeg
 
 RUN useradd -rm -d /home/user -s /bin/bash -g root -G sudo -u 1000 user
-USER user
 
 RUN mkdir -p /home/user/slam3r
 WORKDIR /home/user/slam3r
@@ -27,5 +26,9 @@ RUN echo 'from slam3r.models import Local2WorldModel, Image2PointsModel' > downl
     echo 'Image2PointsModel.from_pretrained("siyan824/slam3r_i2p")' >> download_models.py && \
     echo 'Local2WorldModel.from_pretrained("siyan824/slam3r_l2w")' >> download_models.py && \
     python3 download_models.py
+
+# 設定目錄權限並切換使用者
+RUN chown -R user:root /home/user/slam3r
+USER user
 
 ENTRYPOINT ["python3", "app.py"]
