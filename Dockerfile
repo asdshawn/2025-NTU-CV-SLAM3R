@@ -16,7 +16,7 @@ COPY requirements*txt .
 
 RUN pip3 install xformers==0.0.28.post2 --index-url https://download.pytorch.org/whl/cu118 && \
     pip3 install -r requirements.txt && \
-    pip3 install -r requirements_vis.txt
+    pip3 install -r requirements_optional.txt
 
 COPY . .
 
