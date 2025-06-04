@@ -2,11 +2,11 @@
 
 inp_dir="../data/7SCENES/"
 # 確保輸出目錄存在
-if [ ! -d "../data/gt_points/" ]; then
-    mkdir -p ../data/gt_points/
+if [ ! -d "../results/gt_points/" ]; then
+    mkdir -p ../results/gt_points/
 fi
 # 輸出目錄
-outp_dir="../data/gt_points/"
+outp_dir="../results/gt_points/"
 
 declare -A SEQ
 
