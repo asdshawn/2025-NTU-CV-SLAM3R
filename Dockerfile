@@ -6,7 +6,7 @@ RUN apt update && apt -y install python3-pip sudo libglib2.0-dev libgl1 ffmpeg
 
 RUN useradd -rm -d /home/user -s /bin/bash -g root -G sudo -u 1000 user
 
-RUN mkdir -p /home/user/slam3r
+RUN mkdir -p /home/user/slam3r /home/user/.cache/huggingface
 WORKDIR /home/user/slam3r
 
 RUN pip3 install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 --index-url https://download.pytorch.org/whl/cu118
