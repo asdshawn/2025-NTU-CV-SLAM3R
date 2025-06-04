@@ -10,6 +10,7 @@ from .scannetpp_seq import ScanNetpp_Seq
 from .project_aria_seq import Aria_Seq
 from .co3d_seq import Co3d_Seq
 from .base.base_stereo_view_dataset import EasyDataset
+from .seven_scenes_seq import SevenScenes_Seq
 
 def get_data_loader(dataset, batch_size, num_workers=8, shuffle=True, drop_last=True, pin_mem=True):
     import torch

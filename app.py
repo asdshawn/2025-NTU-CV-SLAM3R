@@ -613,8 +613,15 @@ if __name__ == '__main__':
     else:
         server_name = '0.0.0.0' if args.local_network else '127.0.0.1'
     
-    i2p_model = Image2PointsModel.from_pretrained('siyan824/slam3r_i2p')
-    l2w_model = Local2WorldModel.from_pretrained('siyan824/slam3r_l2w')
+    # 在 app.py 的模型載入部分加入 cache_dir 參數
+    i2p_model = Image2PointsModel.from_pretrained(
+        'siyan824/slam3r_i2p',
+        cache_dir='/home/user/.cache/huggingface'
+    )
+    l2w_model = Local2WorldModel.from_pretrained(
+        'siyan824/slam3r_l2w',
+        cache_dir='/home/user/.cache/huggingface'
+    )
     i2p_model.to(args.device)
     l2w_model.to(args.device)
     i2p_model.eval()
