@@ -596,7 +596,7 @@ def main_demo(i2p_model, l2w_model, device, tmpdirname, server_name, server_port
                             inputs=[per_frame_res, tmpdir_name, num_points_save, conf_thres_l2w],
                             outputs=outmodel)
 
-    demo.launch(share=False, server_name=server_name, server_port=server_port)
+    demo.launch(share=True, server_name=server_name, server_port=server_port)
 
 
 if __name__ == '__main__':
