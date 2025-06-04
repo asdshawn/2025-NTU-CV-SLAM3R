@@ -6,23 +6,7 @@ TL;DR: A real-time RGB SLAM system that performs dense 3D reconstruction via poi
 
 
 <p align="center">
-  <h2 align="center">[CVPR 2025 Highlight] SLAM3R: Real-Time Dense Scene Reconstruction from Monocular RGB Videos</h2>
- <p align="center">
-    <a href="https://ly-kc.github.io/">Yuzheng Liu*</a>
-    ·
-    <a href="https://siyandong.github.io/">Siyan Dong*</a>
-    ·
-    <a href="https://ffrivera0.github.io/">Shuzhe Wang</a>
-    ·
-    <a href="https://yd-yin.github.io/">Yingda Yin</a>
-    ·
-    <a href="https://yanchaoyang.github.io/">Yanchao Yang</a>
-    ·
-    <a href="https://fqnchina.github.io/">Qingnan Fan</a>
-    ·
-    <a href="https://baoquanchen.info/">Baoquan Chen</a>
-  </p>
-  <h3 align="center"><a href="https://arxiv.org/abs/2412.09401">Paper</a> | <a href="https://www.youtube.com/watch?v=V1SHYkCTqHc">Video</a> | <a href="https://drive.google.com/file/d/1H631eKi6Vz-ijHcKt1JGyio-puxIYBvJ/view?usp=drive_link">Poster</a> </h3>
+  <h2 align="center">[2025-NTU-Computer-Vision] Final Project: SLAM3R</h2>
 <!-- <div style="line-height: 1;" align=center>
   <a href="https://arxiv.org/abs/2412.09401" target="_blank" style="margin: 2px;">
     <img alt="Arxiv" src="https://img.shields.io/badge/Arxiv-SLAM3R-red" style="display: inline-block; vertical-align: middle;"/>
@@ -42,61 +26,56 @@ TL;DR: A real-time RGB SLAM system that performs dense 3D reconstruction via poi
 </p>
 <be>
 
+## Prerequisites
 
-## News
+- You installed the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-the-nvidia-container-toolkit).
 
-* **2025-04:** SLAM3R is reported by [机器之心(Chinese)](https://mp.weixin.qq.com/s/fK5vJwbogcfwoduI9FuQ6w) 
-
-* **2025-04:** 🎉 SLAM3R is selected as a **highlight paper** in CVPR 2025 and **Top1 paper** in China3DV 2025.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Demo](#demo)
-- [Gradio interface](#gradio-interface)
-- [Evaluation on the Replica dataset](#Evaluation-on-the-Replica-dataset)
-- [Training](#training)
-- [Citation](#citation)
-- [Acknowledgments](#acknowledgments)
+- You installed [Docker](https://www.docker.com/).
+  
+  To verify installation, run:
+  ```bash
+  docker run hello-world
+  ```
+  or
+  ```bash
+  sudo docker run hello-world
+  ```
+  
+  It should display:
+  ```
+  Hello from Docker!
+  This message shows that your installation appears to be working correctly.
+  
+  To generate this message, Docker took the following steps:
+   1. The Docker client contacted the Docker daemon.
+   2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+      (amd64)
+   3. The Docker daemon created a new container from that image which runs the
+      executable that produces the output you are currently reading.
+   4. The Docker daemon streamed that output to the Docker client, which sent it
+      to your terminal.
+  
+  To try something more ambitious, you can run an Ubuntu container with:
+   $ docker run -it ubuntu bash
+  
+  Share images, automate workflows, and more with a free Docker ID:
+   https://hub.docker.com/
+  
+  For more examples and ideas, visit:
+   https://docs.docker.com/get-started/
+  ```
 
 ## Installation
 
 1. Clone SLAM3R
 ```bash
-git clone https://github.com/PKU-VCL-3DV/SLAM3R.git
-cd SLAM3R
+git clone https://github.com/asdshawn/2025-NTU-CV-SLAM3R.git && cd 2025-NTU-CV-SLAM3R/
 ```
 
 2. Prepare environment
 ```bash
-conda create -n slam3r python=3.11 cmake=3.14.0
-conda activate slam3r 
-# install torch according to your cuda version
-pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 --index-url https://download.pytorch.org/whl/cu118
-pip install -r requirements.txt
-# optional: install additional packages to support visualization and data preprocessing
-pip install -r requirements_optional.txt
+docker build -t slam3r_ntu .
 ```
-
-3. Optional: Accelerate SLAM3R with XFormers and custom cuda kernels for RoPE
-```bash
-# install XFormers according to your pytorch version, see https://github.com/facebookresearch/xformers
-pip install xformers==0.0.28.post2
-# compile cuda kernels for RoPE
-# if the compilation fails, try the propoesd solution: https://github.com/CUT3R/CUT3R/issues/7.
-cd slam3r/pos_embed/curope/
-python setup.py build_ext --inplace
-cd ../../../
-```
-
-4. Optional: Download the SLAM3R checkpoints for the [Image-to-Points](https://huggingface.co/siyan824/slam3r_i2p) and [Local-to-World](https://huggingface.co/siyan824/slam3r_l2w) models through HuggingFace 
-```bash
-from slam3r.models import Image2PointsModel, Local2WorldModel
-Image2PointsModel.from_pretrained('siyan824/slam3r_i2p')
-Local2WorldModel.from_pretrained('siyan824/slam3r_l2w')
-```
-The pre-trained model weights will automatically download when running the demo and evaluation code below. 
-
 
 ## Demo
 ### Replica dataset
