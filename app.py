@@ -611,7 +611,7 @@ if __name__ == '__main__':
     if args.server_name is not None:
         server_name = args.server_name
     else:
-        server_name = '0.0.0.0' if args.local_network else '127.0.0.1'
+        server_name = '0.0.0.0' if args.local_network else 'localhost'
     
     # 在 app.py 的模型載入部分加入 cache_dir 參數
     i2p_model = Image2PointsModel.from_pretrained(
