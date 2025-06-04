@@ -83,8 +83,8 @@ docker build -t slam3r_ntu .
 ```bash
 # Gradio interface
 docker run --gpus all -t -p 7860:7860 slam3r_ntu
-# CLI
-docker run --gpus all -it -p 7860:7860 --entrypoint /bin/bash slam3r_ntu
+# or CLI mode
+# docker run --gpus all -it -p 7860:7860 --entrypoint /bin/bash slam3r_ntu
 ```
 
 ## Demo
