@@ -77,6 +77,11 @@ git clone https://github.com/asdshawn/2025-NTU-CV-SLAM3R.git && cd 2025-NTU-CV-S
 docker build -t slam3r_ntu .
 ```
 
+3. Run docker
+```bash
+docker run --gpus all -t -p 7860:7860 slam3r_ntu
+```
+
 ## Demo
 ### Replica dataset
 To run our demo on Replica dataset, download the sample scene [here](https://drive.google.com/file/d/1NmBtJ2A30qEzdwM0kluXJOp2d1Y4cRcO/view?usp=drive_link) and unzip it to `./data/Replica_demo/`. Then run the following command to reconstruct the scene from the video images 
