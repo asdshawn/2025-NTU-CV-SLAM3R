@@ -28,6 +28,8 @@ TL;DR: A real-time RGB SLAM system that performs dense 3D reconstruction via poi
 
 ## Prerequisites
 
+- Ununtu20.04+
+
 - You installed the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-the-nvidia-container-toolkit).
 
 - You installed [Docker](https://www.docker.com/).
