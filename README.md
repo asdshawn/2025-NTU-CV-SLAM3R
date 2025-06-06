@@ -31,6 +31,34 @@ TL;DR: A real-time RGB SLAM system that performs dense 3D reconstruction via poi
 - Ubuntu20.04+
 
 - You installed the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-the-nvidia-container-toolkit).
+  
+  1. Configure the production repository:
+     ```bash
+     curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+     && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+     ```
+     Optionally, configure the repository to use experimental packages:
+     ```bash
+     sed -i -e '/experimental/ s/^#//g' /etc/apt/sources.list.d/nvidia-container-toolkit.list
+     ```
+  2. Update the packages list from the repository:
+     ```bash
+     sudo apt-get update
+     ```
+  3. Install the NVIDIA Container Toolkit packages:
+     ```bash
+     sudo apt-get install -y nvidia-container-toolkit
+     ```
+  4. Configure the container runtime by using the nvidia-ctk command:
+     ```bash
+     sudo nvidia-ctk runtime configure --runtime=docker
+     ```
+  6. Restart the Docker daemon:
+     ```bash
+     sudo systemctl restart docker
+     ```
 
 - You installed [Docker](https://www.docker.com/).
   
