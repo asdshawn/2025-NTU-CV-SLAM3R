@@ -151,7 +151,7 @@ We also provide a Gradio interface, where you can upload a directory, a video or
 The interface can be launched with the following command:
 
  ```bash
- python app.py
+ python3 app.py
  ```
 
 Here is a demo GIF for the Gradio interface (accelerated).
@@ -177,7 +177,7 @@ The processed GT will be saved at `./results/gt_points/`.
 3. Evaluate the reconstruction on the Replica dataset with the following command:
 
 ```bash
-python evaluation/eval.py -rec path/to/results/ -gt path/to/ground_truth # Add -b option for bonus sequence
+python3 evaluation/eval.py -rec path/to/results/ -gt path/to/ground_truth # Add -b option for bonus sequence
 ```
 
 ## Evaluation on the Replica dataset
@@ -192,7 +192,7 @@ rm -rf Replica.zip
 
 2. Obtain the GT pointmaps and valid masks for each frame by running the following command:
 ```bash
-python evaluation/process_gt.py
+python3 evaluation/process_gt.py
 ```
 The processed GT will be saved at `./results/gt/replica`.
 
