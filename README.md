@@ -213,12 +213,77 @@ Both the numerical results and the error heatmaps will be saved in the directory
 
 We use ScanNet++, Aria Synthetic Environments and Co3Dv2 to train our models. For data downloading and pre-processing, please refer to [here](./docs/data_preprocess.md). 
 
-### Pretrained weights
+### Pretrained weights from DUSt3R
 
 ```bash
 # download the pretrained weights from DUSt3R
 mkdir checkpoints 
 wget https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_224_linear.pth -P checkpoints/
+```
+
+### Pretrained weights from SLAM3R
+
+```bash
+# download the pretrained weights from SLAM3R
+mkdir checkpoints 
+wget https://huggingface.co/siyan824/slam3r_i2p/resolve/main/slam3r_i2p.pth -P checkpoints/
+wget https://huggingface.co/siyan824/slam3r_l2w/resolve/main/slam3r_l2w.pth -P checkpoints/
+```
+
+### Hyperparameters for 7-Scenes dataset
+
+```bash
+TRAIN_DATASET="1000 @ SevenScenes_Seq(scene_id='chess',seq_id=1,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='chess',seq_id=2,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='chess',seq_id=4,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='chess',seq_id=6,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='fire',seq_id=1,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='fire',seq_id=2,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='heads',seq_id=2,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=1,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=3,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=4,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=5,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=8,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=10,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='pumpkin',seq_id=2,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='pumpkin',seq_id=3,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='pumpkin',seq_id=6,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='pumpkin',seq_id=8,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=1,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=2,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=5,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=7,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=8,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=11,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=13,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='stairs',seq_id=2,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='stairs',seq_id=3,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='stairs',seq_id=5,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='stairs',seq_id=6,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20)"
+
+TEST_DATASET="1000 @ SevenScenes_Seq(scene_id='chess',seq_id=3,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='chess',seq_id=5,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='fire',seq_id=3,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='fire',seq_id=4,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='heads',seq_id=1,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=2,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=6,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=7,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='office',seq_id=9,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='pumpkin',seq_id=1,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='pumpkin',seq_id=7,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=3,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=4,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=6,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=12,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='redkitchen',seq_id=14,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='stairs',seq_id=1,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20) + \
+1000 @ SevenScenes_Seq(scene_id='stairs',seq_id=4,resolution=(224,224), num_views=5, start_freq=1, sample_freq=20)"
+
+# Stage 1: Train the i2p model for pointmap prediction
+PRETRAINED="checkpoints/slam3r_i2p/slam3r_i2p.pth"
+TRAIN_OUT_DIR="checkpoints/i2p/slam3r_i2p_stage1"
 ```
 
 ### Start training
@@ -245,7 +310,6 @@ If you find our work helpful in your research, please consider citing:
 }
 ```
 
-
 ## Acknowledgments
 
 Our implementation is based on several awesome repositories:
@@ -254,5 +318,6 @@ Our implementation is based on several awesome repositories:
 - [DUSt3R](https://github.com/naver/dust3r)
 - [NICER-SLAM](https://github.com/cvg/nicer-slam)
 - [Spann3R](https://github.com/HengyiWang/spann3r)
+- [SLAM3R](https://github.com/PKU-VCL-3DV/SLAM3R)
 
 We thank the respective authors for open-sourcing their code.
