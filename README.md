@@ -177,7 +177,7 @@ The processed GT will be saved at `./results/gt_points/`.
 3. Evaluate the reconstruction on the Replica dataset with the following command:
 
 ```bash
-python evaluation/eval.py
+python evaluation/eval.py -rec path/to/results/ -gt path/to/ground_truth # Add -b option for bonus sequence
 ```
 
 ## Evaluation on the Replica dataset
