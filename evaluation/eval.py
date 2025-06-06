@@ -6,26 +6,22 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument("-rec", "--reconstruct", dest="rec_path",
                         help="Path to the reconstruction directory containing .ply files",
-                        default=f"{os.curdir}/../results/recon_points/"
+                        default=f"{os.curdir}/../results/recon_points/",
                         required=True)
     parser.add_argument("-gt", "--ground_truth", dest="gt_path",
                         help="Path to the ground truth .ply file",
                         default=f"{os.curdir}/../data/gt_points/",
                         required=True)
     parser.add_argument("-b", "--bonus", dest="bonus",
-                        help="Bonus evaluation mode",
+                        help="Bonus sequence only evaluation mode",
                         action='store_true', default=False)
     
-    rec_path = parser.parse_args().sequence_path
-    gt_path = parser.parse_args().ply_path
+    rec_path = parser.parse_args().rec_path
+    gt_path = parser.parse_args().gt_path
     bonus = parser.parse_args().bonus
-    
+
     if bonus:
-        seq = ['chess-seq-03', 'chess-sparse-seq-05', 'fire-seq-03', 'fire-sparse-seq-04',
-               'heads-seq-01', 'office-seq-02', 'office-seq-06', 'office-seq-07', 'office-seq-09',
-               'pumpkin-seq-01', 'pumpkin-sparse-seq-07', 'redkitchen-seq-03', 'redkitchen-seq-04',
-               'redkitchen-seq-06', 'redkitchen-seq-12', 'redkitchen-seq-14', 'stairs-seq-01',
-               'stairs-sparse-seq-04']
+        seq = ['chess-sparse-seq-05', 'fire-sparse-seq-04', 'pumpkin-sparse-seq-07', 'stairs-sparse-seq-04']
     else:
         seq = ['chess-seq-03', 'fire-seq-03', 'heads-seq-01', 'office-seq-02', 'office-seq-06',
                'office-seq-07', 'office-seq-09', 'pumpkin-seq-01', 'redkitchen-seq-03',
@@ -37,6 +33,8 @@ if __name__ == '__main__':
     comp_list = []
     comp_median_list = []
     
+    print('')
+
     for s in seq:
         rec_points = load_points_from_ply(f'{rec_path}/{s}.ply')
         gt_points = load_points_from_ply(f'{gt_path}/{s}.ply')
@@ -59,4 +57,4 @@ if __name__ == '__main__':
     print(f'\nAverage acc: {avg_acc:.4f}')
     print(f'Average acc_median: {avg_acc_median:.4f}')
     print(f'Average comp: {avg_comp:.4f}')
-    print(f'Average comp_median: {avg_comp_median:.4f}')
+    print(f'Average comp_median: {avg_comp_median:.4f}\n')
