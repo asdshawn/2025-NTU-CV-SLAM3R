@@ -109,10 +109,11 @@ docker build -t slam3r_ntu .
 
 3. Run slam3r_ntu
 ```bash
+# CLI mode
+./run_slam3r.sh
+
 # Gradio interface
-docker run --gpus all -t -p 7860:7860 slam3r_ntu
-# or CLI mode
-# docker run --gpus all -it -p 7860:7860 --entrypoint /bin/bash slam3r_ntu
+./run_slam3r.sh --quick_start
 ```
 
 ## Demo
