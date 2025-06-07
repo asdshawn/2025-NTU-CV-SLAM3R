@@ -37,7 +37,7 @@ for folder_name in "${!SEQ[@]}"; do
 
         echo "Processing outp_directory: ${seq_path}"
 
-        python3 seq2ply.py -inp ${seq_path} -outp ${outp_dir}/"${folder_name}-${seq_val}.ply"
+        python3 ../evaluation/seq2ply.py -inp ${seq_path} -outp ${outp_dir}/"${folder_name}-${seq_val}.ply"
 
         echo ""
     done
