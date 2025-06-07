@@ -6,7 +6,7 @@ TL;DR: A real-time RGB SLAM system that performs dense 3D reconstruction via poi
 
 
 <p align="center">
-  <h2 align="center">[2025-NTU-Computer-Vision] Final Project: SLAM3R</h2>
+  <h2 align="center">[2025-NTU-Computer-Vision] Final Project: Docker-based SLAM3R</h2>
 <!-- <div style="line-height: 1;" align=center>
   <a href="https://arxiv.org/abs/2412.09401" target="_blank" style="margin: 2px;">
     <img alt="Arxiv" src="https://img.shields.io/badge/Arxiv-SLAM3R-red" style="display: inline-block; vertical-align: middle;"/>
