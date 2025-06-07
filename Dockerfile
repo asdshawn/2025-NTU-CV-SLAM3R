@@ -2,7 +2,7 @@ FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 
 EXPOSE 7860/tcp
 
-RUN apt update && apt -y install python3-pip sudo libglib2.0-dev libgl1 ffmpeg
+RUN apt update && apt -y install python3-pip sudo libglib2.0-dev libgl1 ffmpeg unzip
 
 RUN useradd -rm -d /home/user -s /bin/bash -g root -G sudo -u 1000 user
 
@@ -15,7 +15,7 @@ COPY requirements*txt .
 
 RUN pip3 install -r requirements.txt && \
     pip3 install -r requirements_optional.txt && \
-    pip3 install plyfile
+    pip3 install plyfile gdown
 
 COPY . .
 
