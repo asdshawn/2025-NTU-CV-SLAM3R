@@ -25,8 +25,12 @@ for folder_name in "${!SEQ[@]}"; do
     for seq_val in "${sequences[@]}"; do
         seq_path="data/7SCENES/${folder_name}/test/${seq_val}/"
 
-        ./demo_7scenes.sh "${seq_path}"
+        bash scripts/demo_7scenes.sh ${seq_path} &
 
         echo ""
     done
 done
+
+wait
+
+echo "All sequences processed successfully."
