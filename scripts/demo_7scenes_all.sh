@@ -26,8 +26,6 @@ for folder_name in "${!SEQ[@]}"; do
         seq_path="data/7SCENES/${folder_name}/test/${seq_val}/"
 
         bash scripts/demo_7scenes.sh ${seq_path} &
-
-        echo ""
     done
 done
 
