@@ -32,4 +32,6 @@ RUN rm download_models.py
 RUN chown -R user:root /home/user
 USER user
 
+VOLUME ["/home/user/slam3r/"]
+
 ENTRYPOINT ["python3", "app.py"]
