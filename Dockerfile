@@ -9,12 +9,11 @@ RUN useradd -rm -d /home/user -s /bin/bash -g root -G sudo -u 1000 user
 RUN mkdir -p /home/user/slam3r /home/user/.cache/huggingface
 WORKDIR /home/user/slam3r
 
-RUN pip3 install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 --index-url https://download.pytorch.org/whl/cu118
+RUN pip3 install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 xformers==0.0.28.post2 --index-url https://download.pytorch.org/whl/cu118
 
 COPY requirements*txt .
 
-RUN pip3 install xformers==0.0.28.post2 --index-url https://download.pytorch.org/whl/cu118 && \
-    pip3 install -r requirements.txt && \
+RUN pip3 install -r requirements.txt && \
     pip3 install -r requirements_optional.txt
 
 COPY . .
@@ -30,7 +29,7 @@ RUN echo 'from slam3r.models import Local2WorldModel, Image2PointsModel' > downl
 RUN rm download_models.py
 
 # 設定目錄權限並切換使用者
-RUN chown -R user:root /home/user/slam3r /home/user/.cache/
+RUN chown -R user:root /home/user
 USER user
 
 ENTRYPOINT ["python3", "app.py"]
