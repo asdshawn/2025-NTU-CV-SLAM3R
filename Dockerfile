@@ -14,7 +14,8 @@ RUN pip3 install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 xformers==0.
 COPY requirements*txt .
 
 RUN pip3 install -r requirements.txt && \
-    pip3 install -r requirements_optional.txt
+    pip3 install -r requirements_optional.txt && \
+    pip3 install plyfile
 
 COPY . .
 
